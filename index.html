@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <title>🎂 Feliz Cumpleaños 🎂</title>
+  </head>
+<body>
+  <h1>🎉 ¡Feliz 20 Años Amor 💖 ! 🎂</h1>
+  <button onclick="playMusic()">▶ Reproducir Música</button>
+
+  <!-- Música de cumpleaños (puedes cambiar la URL por tu canción) -->
+  <audio id="bg-music" loop>
+    <source src="Rauw Alejandro - Todo de Ti (Video Oficial) (mp3cut.net).mp3" type="audio/mp3">
+    Tu navegador no soporta el audio.
+  </audio>
+
+  <script>
+    const mensajes = [
+      "💗Te amooooooo",
+      "🎂 Feliz Cumpleaños Amor",
+      "🎁 Que todos tus deseos se hagan realidad",
+      "🥳 Go tomar xd",
+      "💖 Eres mi persona favorita",
+      "🌟 Se tú siempre",
+      "🎶 Apenas somos 2 desconocidoooos....JAJAJA 🎶",
+      "🍰 ¡A comer pastel! JAJAJA",
+      "🎈 Tu y yo siempre"
+    ];
+
+    const emojis = ["💗","🎂","🎉","🎈","💖","✨","🎊","🍰","🥳"];
+    const fotos = [
+      "SB.jpeg",
+      "SF2.jpeg", 
+      "SG.jpeg", 
+      "SLIK.jpeg", 
+      "SLIK2.jpeg",
+      "SyP.jpeg", 
+      "SyR.jpeg", 
+      "SyR1.jpeg", 
+      "SyS.jpeg",
+      "SZ.jpeg",
+      "S1.jpeg",
+      "S2.jpeg",
+      "SF1.jpeg"
+    ];
+
+    function crearElemento() {
+      const elemento = document.createElement("div");
+      elemento.classList.add("falling");
+      elemento.style.left = Math.random() * 100 + "vw";
+      elemento.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+      const tipo = Math.floor(Math.random() * 3);
+      if (tipo === 0) {
+        elemento.textContent = mensajes[Math.floor(Math.random() * mensajes.length)];
+        elemento.style.color = "#fff";
+        elemento.style.fontSize = "4vw";
+      } else if (tipo === 1) {
+        elemento.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        elemento.style.fontSize = "3rem";
+      } else {
+        const img = document.createElement("img");
+        img.src = fotos[Math.floor(Math.random() * fotos.length)];
+        
+        elemento.appendChild(img);
+      }
+
+      document.body.appendChild(elemento);
+      setTimeout(() => elemento.remove(), 8000);
+    }
+
+    setInterval(crearElemento, 1000);
+
+    function playMusic() {
+      const music = document.getElementById("bg-music");
+      music.play();
+    }
+  </script>
+</body>
+</html>
